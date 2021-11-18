@@ -69,7 +69,6 @@ this byte.
 * [Kill Action](#kill-action)
 * [Chat Message](#chat-message)
 * [Map Start (0.75)](#map-start-075)
-* [Map Start (0.76)](#map-start-076)
 * [Map Chunk](#map-chunk)
 * [Player Left](#player-left)
 * [Territory Capture](#territory-capture)
@@ -83,14 +82,6 @@ this byte.
 * [Change Team](#change-team)
 * [Change Weapon](#change-weapon)
 * [Map Cached](#map-cached)
-* [Powerthirst Edition](#powerthirst-edition)
-* [Map Start (PT)](#map-start-pt)
-* [Map Chunk (PT)](#map-chunk-pt)
-* [Script Begin (PT)](#script-begin-pt)
-* [Script Chunk (PT)](#script-chunk-pt)
-* [Script End (PT)](#script-end-pt)
-* [Script Call (PT)](#script-call-pt)
-* [Script Parameters](#script-parameters)
 
 ## Data types
 
