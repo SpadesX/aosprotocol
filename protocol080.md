@@ -418,7 +418,7 @@ Sent when a block is placed/destroyed.
 | Info        | Size        |
 | ----------- | ----------- |
 | Packet ID   | 13          |
-| Total Size: | 15/18 bytes |
+| Total Size: | 16/19 bytes |
 
 #### Fields
 
@@ -426,6 +426,7 @@ Sent when a block is placed/destroyed.
 |-------------|------------|---------|-----------------|
 | player id   | UByte      | `0`     |                 |
 | action type | UByte      | `0`     | See table below |
+| silent      | UByte      | `0`     |                 |
 | x position  | LE Int     | `0`     |                 |
 | y position  | LE Int     | `0`     |                 |
 | z position  | LE Int     | `0`     |                 |
