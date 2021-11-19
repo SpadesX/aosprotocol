@@ -403,7 +403,8 @@ Send on respawn of a player.
 ## Block Action
 Sent when a block is placed/destroyed.
 
-| ----------: | ----------- |
+| Info        | Size        |
+| ----------- | ----------- |
 | Packet ID   | 13          |
 | Total Size: | 15/18 bytes |
 
