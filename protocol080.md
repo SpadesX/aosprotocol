@@ -105,7 +105,8 @@ Clients should send Position Packet according to the frame rate.
 When server sends position packet to client. Client MUST set
 this position to its player.
 
-|-----------:|----------|
+| Info       | Size     |
+|------------|----------|
 |Packet ID:  |  0       |
 |Total Size: | 13 bytes |
 
@@ -121,7 +122,8 @@ Clients should send Orientation packet according to frame rate.
 When server sends a client orientation packet client MUST
 apply this orientation to its player.
 
-|-----------:|----------|
+| Info       | Size     |
+|------------|----------|
 |Packet ID   |  1       |
 |Total Size: | 13 bytes |
 
@@ -140,7 +142,8 @@ players, with empty slots being all 0 (position: [0,0,0], orientation:
 Players that are beyond the 128 block view limit should have position of [0,0,0] or
 other impossible value to not show these players at all.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------- | -------- |
 | Packet ID   | 2        |
 | Total Size: | 13 bytes |
 
@@ -152,7 +155,8 @@ other impossible value to not show these players at all.
 
 #### 'Player Position Data'
 
-| ----------: | --------- |
+| Info        | Size      |
+| ----------- | --------- |
 | Total Size: | 769 bytes |
 
 #### Fields
@@ -168,7 +172,8 @@ other impossible value to not show these players at all.
 
 #### 'Player Position Data'
 
-|------------:|----------|
+| Info        | Size     |
+|------------ | -------- |
 | Total Size: | 24 bytes |
 
 #### Fields
@@ -186,6 +191,7 @@ other impossible value to not show these players at all.
 ## Input Data
 Contains the key-states of a player, packed into a byte.
 
+| Info        | Size     |
 | ----------- | -------- |
 | Packet ID   | 3        |
 | Total Size: | 3 bytes  |
@@ -213,7 +219,8 @@ Contains the key-states of a player, packed into a byte.
 ## Weapon Input
 Contains the weapon input state(?).
 
-|------------:|---------|
+| Info        | Size    |
+|-------------|---------|
 | Packet ID   | 4       |
 | Total Size: | 3 bytes |
 
@@ -229,8 +236,8 @@ Sent by the client when a hit is registered. The server should verify that this
 is possible to prevent abuse (such as hitting without shooting, facing the
 wrong way, etc).
 
-
-| -----------:| ------- |
+| Info        | Size    |
+| ----------- | ------- |
 | Packet ID   | 5       |
 | Total Size: | 3 bytes |
 
@@ -256,8 +263,8 @@ wrong way, etc).
 
 Sent to the client when hurt.
 
-
-| -----------:| -------- |
+| Info        | Size     |
+| ----------- | -------- |
 | Packet ID   | 5        |
 | Total Size: | 15 bytes |
 
@@ -272,7 +279,8 @@ Sent to the client when hurt.
 ## Grenade Packet
 Spawns a grenade with the given information.
 
-| ------------:| --------- |
+| Info         | Size      |
+| ------------ | --------- |
 | Packet ID    | 6         |
 | Total Size:  | 30 bytes  |
 
@@ -292,8 +300,8 @@ Spawns a grenade with the given information.
 ## Set Tool
 Sets a player's currently equipped tool/weapon.
 
-
-|------------:|---------|
+| Info        | Size    |
+|------------ |---------|
 | Packet ID   | 7       |
 | Total Size: | 3 bytes |
 
@@ -316,7 +324,8 @@ Sets a player's currently equipped tool/weapon.
 ## Set Colour
 Set the colour of a player's held block.
 
-|------------:|---------|
+| Info        | Size    |
+|------------ |---------|
 | Packet ID   | 8       |
 | Total Size: | 5 bytes |
 
@@ -330,8 +339,8 @@ Set the colour of a player's held block.
 ## Existing Player
 Set player's team, weapon, etc.
 
-
-|------------:|---------|
+| Info        | Size    |
+|------------ |---------|
 | Packet ID   | 9       |
 | Total Size: | depends |
 
@@ -352,7 +361,8 @@ Set player's team, weapon, etc.
 ## Short Player Data
 Like Existing Player, but with less information.
 
-|------------:|---------|
+| Info        | Size    |
+|------------ |---------|
 | Packet ID   | 10      |
 | Total Size: | 4 bytes |
 
@@ -367,7 +377,8 @@ Like Existing Player, but with less information.
 ## Move Object
 This packet is used to move various game objects like tents, intels and even grenades. When moving grenades in TC mode the voxlap client has a bug that changes grenades' models to small tents.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 11       |
 | Total Size: | 15 bytes |
 
@@ -384,7 +395,8 @@ This packet is used to move various game objects like tents, intels and even gre
 ## Create Player
 Send on respawn of a player.
 
-| ----------: | ------- |
+| Info        | Size    |
+| ----------  | ------- |
 | Packet ID   | 12      |
 | Total Size: | depends |
 
@@ -435,7 +447,8 @@ Sent when a block is placed/destroyed.
 ## Block Line
 Create a line of blocks between 2 points. The block color is defined by the `Set Color` packet. 
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 14       |
 | Total Size: | 26 bytes |
 
@@ -452,7 +465,8 @@ Create a line of blocks between 2 points. The block color is defined by the `Set
 ## CTF State
 Brief description.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | none     |
 | Total Size: | 52 bytes |
 
@@ -512,7 +526,8 @@ Indicates that the map transfer is complete. Also informs the client of
 numerous game parameters. Be aware that CTFState or TCState may be appended to
 the packet after the gamemode id portion.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 15       |
 | Total Size: | 52 bytes |
 
@@ -540,7 +555,8 @@ the packet after the gamemode id portion.
 
 Notify the client of a player's death.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 16       |
 | Total Size: | 5 bytes  |
 
@@ -568,8 +584,8 @@ Notify the client of a player's death.
 
 Reasonable limits must placed on length and frequency of chat messages.
 
-
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 17       |
 | Total Size: | . bytes  |
 
@@ -596,7 +612,8 @@ Sent when a client connects, or a map is advanced for already existing connectio
 
 Should be the first packet received when a client connects.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 18       |
 | Total Size: | 5 bytes  |
 
@@ -611,7 +628,8 @@ Sent just after **Map Start**, repeatedly until the entire map is sent.
 
 Should always be the next sequence of packets after a **Map Start** packet.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 19       |
 | Total Size: | depends  |
 
@@ -626,8 +644,8 @@ Should always be the next sequence of packets after a **Map Start** packet.
 
 Sent when a player disconnects.
 
-
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 20       |
 | Total Size: | 2 bytes  |
 
@@ -644,7 +662,8 @@ Sent when a player captures a Command Post in Territory Control mode.
 
 Captures have affects on the client.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 21       |
 | Total Size: | 5 bytes  |
 
@@ -662,8 +681,8 @@ Captures have affects on the client.
 
 Display the TC progress bar.
 
-
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 22       |
 | Total Size: | 8 bytes  |
 
@@ -683,7 +702,8 @@ Sent when a player captures the intel, which is determined by the server.
 
 Winning captures have affects on the client.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 23       |
 | Total Size: | 3 bytes  |
 
@@ -699,7 +719,8 @@ Winning captures have affects on the client.
 
 Sent when a player collects the intel, which is determined by the server.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 24       |
 | Total Size: | 2 bytes  |
 
@@ -714,8 +735,8 @@ Sent when a player collects the intel, which is determined by the server.
 
 Sent when a player dropped the intel. This will update the intel position on the client.
 
-
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 25       |
 | Total Size: | 14 bytes |
 
@@ -732,7 +753,8 @@ Sent when a player dropped the intel. This will update the intel position on the
 
 Id of the player who has been restocked.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 26       |
 | Total Size: | 2 bytes  |
 
@@ -747,7 +769,8 @@ Id of the player who has been restocked.
 
 Set the colour of a player's fog.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 27       |
 | Total Size: | 5 bytes  |
 
@@ -766,9 +789,10 @@ clients after protocol logic applied.
 This has no affect on animation, but is used to trigger sound effects on the
 other clients.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 28       |
-| Total Size: | 4 bytes |
+| Total Size: | 4 bytes  |
 
 #### Fields
 
@@ -786,7 +810,8 @@ directly, but instead uses **Kill Action**
 then **Create Player** to inform other
 clients of the team change.
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 29       |
 | Total Size: | 3 bytes  |
 
@@ -815,8 +840,8 @@ Receiving clients will also be sent a preceding
 **Kill Action** to inform them the player
 has died both of which are sent as reliable packets.
 
-
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 30       |
 | Total Size: | 3 bytes  |
 
@@ -836,7 +861,8 @@ has died both of which are sent as reliable packets.
 ## Map Cached
 `Client->Server`
 
-| ----------: | -------- |
+| Info        | Size     |
+| ----------  | -------- |
 | Packet ID   | 31       |
 | Total Size: | 2 bytes  |
 
