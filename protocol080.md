@@ -403,9 +403,9 @@ Send on respawn of a player.
 ## Block Action
 Sent when a block is placed/destroyed.
 
-| ----------: | -------- |
-| Packet ID   | 13       |
-| Total Size: | 15 bytes |
+| ----------: | ----------------------------------------- |
+| Packet ID   | 13                                        |
+| Total Size: | 15 bytes or 18 when sending action type 4 |
 
 #### Fields
 
@@ -416,6 +416,9 @@ Sent when a block is placed/destroyed.
 | x position  | LE Int     | `0`     |                 |
 | y position  | LE Int     | `0`     |                 |
 | z position  | LE Int     | `0`     |                 |
+| Blue color  | UByte      | `0`     | sent for type 4 |
+| Green color | UByte      | `0`     | sent for type 4 |
+| Red color   | UByte      | `0`     | sent for type 4 |
 
 
 #### Fields
@@ -426,6 +429,7 @@ Sent when a block is placed/destroyed.
 | 1     | bullet and spade(left button) destroy |                                                     |
 | 2     | spade(right button) destroy           | destroys 3 blocks, one above and below additionally |
 | 3     | grenade destroy                       | destroys all blocks within an 3x3x3 area            |
+| 4     | block change of color                 | Changes color of the block to the color provided    |
 
 ## Block Line
 Create a line of blocks between 2 points. The block color is defined by the `Set Color` packet. 
