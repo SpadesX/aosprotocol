@@ -48,8 +48,7 @@ this byte.
 
 * [Position Data](#position-data)
 * [Orientation Data](#orientation-data)
-* [World Update (0.75)](#world-update-075)
-* [World Update (0.76)](#world-update-076)
+* [World Update](#world-update)
 * [Input Data](#input-data)
 * [Weapon Input](#weapon-input)
 * [Hit Packet](#hit-packet)
