@@ -135,58 +135,49 @@ apply this orientation to its player.
 |        y | LE Float |  `0`  |     |
 |        z | LE Float |  `0`  |     |
 
-## World Update (0.75)
-Updates position and orientation of all players. Always sends data for 32
-players, with empty slots being all 0 (position: [0,0,0], orientation:
-[0,0,0]).
-Players that are beyond the 128 block view limit should have position of [0,0,0] or
-other impossible value to not show these players at all.
+## World Update
+Updates position and orientation of players.
+When a player is no longer visible to other player
+both of them should get at least 3 (to account for lost packets)
+World Update packets that contain the player out of range
+and set orientation and position to {0,0,0} vectors or
+other impossible value.
 
-| Info        | Size     |
-| ----------- | -------- |
-| Packet ID   | 2        |
-| Total Size: | 13 bytes |
+Timestamp should be used to check for order of the packets
+as to not set variables that were before already applied values.
+This should eliminate jitter in position.
+
+
+| Info        | Size                                       |
+| ----------- | ------------------------------------------ |
+| Packet ID   | 2                                          |
+| Total Size: | 10 + (Number of player IDs sent * 25) bytes |
 
 #### Fields
 
 | Field Name                         | Field Type                        | Example | Notes                    |
-|------------------------------------|-----------------------------------|---------|--------------------------|
-| players positions and orientations | Array[32] of Player Position Data |         | See below table for data |
+|------------------------------------|-----------------------------------|--------------|--------------------------|
+| Number of Player IDs sent          | UByte                             | `32`         |                          |
+| Timestamp                          | UInt64                            | `1638026801` | Unix type of epoch       |
+| players positions and orientations | Array of Player Position Data     |              | See below table for data |
 
 #### 'Player Position Data'
 
 | Info        | Size      |
 | ----------- | --------- |
-| Total Size: | 769 bytes |
+| Total Size: | 25 bytes  |
 
 #### Fields
 
-| Field Name    | Field Type | Example | Notes             |
-|---------------|------------|---------|-------------------|
-| x position    | LE Float   | `0`     | 0 for non-players |
-| y position    | LE Float   | `0`     | 0 for non-players |
-| z position    | LE Float   | `0`     | 0 for non-players |
-| x orientation | LE Float   | `0`     | 0 for non-players |
-| y orientation | LE Float   | `0`     | 0 for non-players |
-| z orientation | LE Float   | `0`     | 0 for non-players |
-
-#### 'Player Position Data'
-
-| Info        | Size     |
-|------------ | -------- |
-| Total Size: | 24 bytes |
-
-#### Fields
-
-| Field Name    | Field Type | Example | Notes |
-|---------------|------------|---------|-------|
-| player ID     | UByte      | `0`     |       |
-| x position    | LE Float   | `0`     |       |
-| y position    | LE Float   | `0`     |       |
-| z position    | LE Float   | `0`     |       |
-| x orientation | LE Float   | `0`     |       |
-| y orientation | LE Float   | `0`     |       |
-| z orientation | LE Float   | `0`     |       |
+| Field Name    | Field Type | Example | Notes   |
+|---------------|------------|---------|---------|
+| Player ID     | UByte      | `15`    |         |
+| x position    | LE Float   | `0`     |         |
+| y position    | LE Float   | `0`     |         |
+| z position    | LE Float   | `0`     |         |
+| x orientation | LE Float   | `0`     |         |
+| y orientation | LE Float   | `0`     |         |
+| z orientation | LE Float   | `0`     |         |
 
 ## Input Data
 Contains the key-states of a player, packed into a byte.
