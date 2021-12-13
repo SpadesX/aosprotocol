@@ -1,4 +1,5 @@
-# VMF (Voxel Map File) format specification
+# VMF (Voxel Map File) format specification 
+Very WIP. Until optimized heavily 0.8 will use VXL
 
 #### Revision History
 
