@@ -1,5 +1,4 @@
-This page documents the networking Protocol of Ace of Spades 0.75, as well as
-the extensions made by the community.
+This page documents the networking Protocol of Ace of Spades 0.80
 
 # Overview
 [Ace of Spades](http://buildandshoot.com/) uses the [ENet networking
@@ -11,45 +10,14 @@ reverse engineered to document the protocol.
 
 ## Versions
 
- * [0.75 (and 0.76) documentation](protocol075.html)
- * [1.0 alpha documentation](protocol100a1.html)
-
-## Extensions
-
-The 0.75 protocol supports extensions, which allow adding new packets as well as
-querying the support for client and server functionality.
-
-### Extensions providing packets
-
-Packetful extensions are extensions that can be used to send packets. Each
-extension has 256 packet types reserved for itself. This is useful for adding
-functionality that requires sending additional information from or to the client.
-
-| ID | Name          | Description                                          | Link |
-|----|---------------|------------------------------------------------------|------|
-|    |               |                                                      |      |
-
-
-### Packetless Extensions
-
-Packetless extensions are extensions that can not send any packets. This is useful
-for signalling support for additional values in or certain behaviours related to
-existing packets.
-
-Packetless extensions exist as an artefact of the implementation of extensions.
-As the space reserved for extension packets is limited, values above 192 do not
-have any packet types left.
-
-| ID  | Name          | Description                                           | Link |
-|-----|---------------|-------------------------------------------------------|------|
-| 192 | Player Limit  | Support for up to 256 players                         | TODO |
-| 193 | Message Types | Additional message types such as warnings and satuses | TODO [#14](https://github.com/piqueserver/aosprotocol/issues/14) |
-| 194 | Kick Reason   | Repurposes the chat to send a disconnect reason text  | TODO |
+ * [0.8 documentation](protocol080.html)
 
 ### Implementers
- * [OpenSpades](https://github.com/yvt/openspades)
- * [piqueserver](https://github.com/piqueserver/piqueserver)
- * [BetterSpades](https://github.com/xtreme8000/BetterSpades)
+ Yes or No in is used to specify if server or client wants to or already support 0.8 protocol
+ * [OpenSpades](https://github.com/yvt/openspades) (No comment for now from dev)
+ * [piqueserver](https://github.com/piqueserver/piqueserver) (No comment for now from dev)
+ * [BetterSpades](https://github.com/xtreme8000/BetterSpades) (No comment for now from dev)
+ * [SpadesX](https://github.com/SpadesX/SpadesX) (Yes)
 
 Links to the respective projects pages that detail the extensions evailable in
 each version should be linked here.
