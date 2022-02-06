@@ -179,13 +179,15 @@ This should eliminate jitter in position.
 | y orientation | LE Float   | `0`     |         |
 | z orientation | LE Float   | `0`     |         |
 
-## Input State Data
-Contains the key-states of a player, packed into a byte and XYZ vectors for orientation
+## Input Data
+Contains the key-states of a player, packed into a byte and XYZ vectors for orientation.
+This packet should be sent to server basically as much as we can.
+Packets have to be sent ordered. 
 
 | Info        | Size     |
 | ----------- | -------- |
 | Packet ID   | 3        |
-| Total Size: | 3 bytes  |
+| Total Size: | 15 bytes  |
 
 #### Fields
 
