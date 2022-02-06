@@ -116,6 +116,7 @@ this position to its player.
 |        z | LE Float |  `0`  |     |
 
 ## Orientation Data
+DEPRECATED. Reserve for new packets in future
 This packet is used to set the players orientation.
 Clients should send Orientation packet according to frame rate.
 When server sends a client orientation packet client MUST
@@ -178,8 +179,8 @@ This should eliminate jitter in position.
 | y orientation | LE Float   | `0`     |         |
 | z orientation | LE Float   | `0`     |         |
 
-## Input Data
-Contains the key-states of a player, packed into a byte.
+## Input State Data
+Contains the key-states of a player, packed into a byte and XYZ vectors for orientation
 
 | Info        | Size     |
 | ----------- | -------- |
@@ -192,6 +193,9 @@ Contains the key-states of a player, packed into a byte.
 |------------|------------|---------|-----------------------------------------------------------------------|
 | player ID  | UByte      | `0`     |                                                                       |
 | key states | UByte      | `0`     | Each bit in the byte represents a key, as defined in the table below. |
+|     X      | LE Float   | `0`     | X vector for orientation                                              |
+|     Y      | LE Float   | `0`     | Y vector for orientation                                              |
+|     Z      | LE Float   | `0`     | Z vector for orientation                                              |
 
 #### Key States:
 
