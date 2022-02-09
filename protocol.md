@@ -53,10 +53,6 @@ All packets start with an unsigned byte to specify their type, followed by the
 data for that type of packet. The size given for each packet below includes
 this byte.
 
-## Table of Contents
-
-
-
 ## Data types
 
 Generally, all fields in the Protocol are Low Endian if not specified otherwise.
@@ -79,7 +75,125 @@ The following shorthands are used in this document:
 | Float        | 32bit IEEE float                                        |
 | CP437 String | String encoded with CP437. Usually fixed-length.        |
 
+## Table of Contents
 
+* [State Update](#state-update)
+
+## Packet Types
+
+This section describes each packet type and the data it contains.
+
+## State Update
+`Client <-> Server`
+
+State Update packet is a combination of Input, Position, Orientation and Velocity.
+Check handling requirements in:
+* [Packet Handling Requirements](#packet-handling-requirements)
+
+| Info       | ID |
+|------------|----|
+| Packet ID  | 0  |
+
+### State Data
+
+|Field Name|  Field   |                        Notes                        |
+|---------:|----------|-----------------------------------------------------|
+| Still    |  Uint8   | If set to 1. This is end of the packet              |
+| Pos X    |  Float   | Position float for X axis                           |
+| Pos Y    |  Float   | Position float for Y axis                           |
+| Pos Z    |  Float   | Position float for Z axis                           |
+| Ori X    |  Float   | Orientation float for X axis                        |
+| Ori Y    |  Float   | Orientation float for Y axis                        |
+| Ori Z    |  Float   | Orientation float for Z axis                        |
+| Vel X    |  Float   | Velocity float for X axis                           |
+| Vel Y    |  Float   | Velocity float for Y axis                           |
+| Vel Z    |  Float   | Velocity float for Z axis                           |
+
+### Input States
+
+| Placement | Key    |
+| --------- | ------ |
+| 1         | up     |
+| 2         | down   |
+| 3         | left   |
+| 4         | right  |
+| 5         | jump   |
+| 6         | crouch |
+| 7         | sneak  |
+| 8         | sprint |
+
+### Player State
+
+|Field Name| Field Type  |                        Notes                        |
+|---------:|-------------|-----------------------------------------------------|
+| ID       |  Uint8      | ID of the player for this data                      |
+| Input    |  Uint8      | Bit Packed input. See Input States for details      |
+| State    |  State Data | See state data for details                          |
+
+
+Now for the actual Client and Server packet versions.
+They are split as to save bandwidth.
+
+Client version sends sequence which is an 32bit number starting at 0
+and increments per 1 each time a new state data packet is sent to server.
+
+Client and Server sequences are SEPARATE
+
+Client version sends an 30 element uint8 array of input states for the last 30
+state updates. The first element (0) is the newest and last (29) is the oldest.
+
+Client version then sends state data. If Still flag is set to 1 we do not read
+the following 36bytes.
+Then client version sends state for the oldest input in the array of inputs.
+The still flag in this must ALWAYS be 0.
+
+Server version is similar.
+
+Sequence.
+Size of the following array.
+
+More about the size of this array and what determines it in packet handling requirements.
+
+One element contains:
+ID of the player
+Input state
+State Data
+
+
+### Client Version
+
+Client->Server
+
+| Info       | Size      |
+|------------|-----------|
+|Total Size: | 107 bytes |
+
+|Field Name|    Field Type     |                        Notes                        |
+|---------:|-------------------|-----------------------------------------------------|
+| Sequence |  Uint32           | Index of sequence of State data since beginning     |
+| Input    |  30 Uint8 Array   | Array of input data. See input states for details   |
+| State    |  State Data       | See state data for details                          |
+| State-30 |  State Data       | State data for 30th input. Doesnt include still byte|
+
+### Server Version
+
+Server->Clients
+
+| Info       | Size     |
+|------------|----------|
+|Total Size: | At max 1152 bytes |
+
+|  Field Name   |    Field Type     |                        Notes                        |
+|--------------:|-------------------|-----------------------------------------------------|
+| Sequence      |  Uint32           | Index of sequence of State data since beginning     |
+| Size of array |  Uint8            | Size of the following array.                        |
+| Player Data   |  Player State     | See Player State for details                        |
+
+# Packet Handling Requirements
+
+## State Update Requirements
+
+To be filled in later. Its too late, dont wanna screw up.
 
 # Other Resources
 * [KVX File Format Specification](https://github.com/piqueserver/aosprotocol/edit/master/index.md) - A mirror of the readme for Slab6 which contains the .kvx file format, the format that the AoS model format is based on
