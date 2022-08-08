@@ -12,6 +12,19 @@ If you are interested in making this project better, there are many ways you can
 - Teach others to use the software.
 - Package and distribute the software in a downstream community (such as your preferred Linux distribution).
 
+## Packet Proposal
+File an issue and name it `PP: PacketName`. Describe what packet you wish to add,
+and how it would improve the game. It will be voted on here on github.
+If the community approves that they want this packet it will be added.
+(Of course unwanted or duplicated features will be denied)
+
+## Packet Add Request
+If your packet has been received positively it is time to write it up. 
+Describe the packet in the style of the other packets and file a Pull Request and name it `PAR: PacketName`
+
+This started out as a dump of the [aoswiki.rakiru.com](aoswiki.rakiru.com) Protocol page, but is meant to be the hub for
+developing the AoS protocol in the future.
+
 ## Bugs and Feature Requests
 If you believe that you have found a bug or wish to propose a new feature, please first search the existing [issues] to see if it has already been reported.
 If you are unable to find an existing issue, consider using one of the provided templates to create a new issue and provide as many details as you can to assist in reproducing the bug or explaining your proposed feature.
