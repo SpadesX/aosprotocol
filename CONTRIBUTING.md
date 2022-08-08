@@ -22,7 +22,7 @@ If the community approves that they want this packet it will be added.
 If your packet has been received positively it is time to write it up. 
 Describe the packet in the style of the other packets and file a Pull Request and name it `PAR: PacketName`
 
-This started out as a dump of the [aoswiki.rakiru.com](aoswiki.rakiru.com) Protocol page, but is meant to be the hub for
+This started out as a dump of the [aoswiki.rakiru.com](https://aoswiki.rakiru.com/) Protocol page, but is meant to be the hub for
 developing the AoS protocol in the future.
 
 ## Bugs and Feature Requests
